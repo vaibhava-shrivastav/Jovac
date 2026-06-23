@@ -92,3 +92,21 @@ button:hover{
     margin:10px 0;
     font-size:16px;
 }
+
+#news{
+    margin-top:20px;
+}
+
+.news-card{
+    display:block;
+    text-decoration:none;
+    color:#222;
+    background:#f8f8f8;
+    padding:12px;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+.news-card:hover{
+    background:#e9f4ff;
+}
