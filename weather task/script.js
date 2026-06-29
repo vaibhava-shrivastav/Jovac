@@ -2,8 +2,12 @@ const btn=document.getElementById("btn")
 const output=document.getElementById("weather");
 const loading=document.getElementById("loading");
 const news=document.getElementById("news");
-const API_KEY = "d0551800686e58bc5c16cd13f8cb06e2";
-const nAPI="7b937d195e9dee305e71d922e264cd01"
+const botInput=document.getElementById("bot-input");
+const botResponse=document.getElementById("bot-response");
+const sendBtn=document.getElementById("send-btn");
+const gemini_api=""
+const API_KEY = "";
+const nAPI=""
 
 btn.addEventListener("click",async (e)=>{
     const city=document.getElementById("input").value.trim();
@@ -73,3 +77,56 @@ btn.addEventListener("click",async (e)=>{
         loading.textContent = "";
     }
 })
+
+sendBtn.addEventListener("click", async () => {
+    const prompt = botInput.value.trim();
+    if (prompt === "") {
+        alert("Enter a message");
+        return;
+    }
+    botResponse.innerHTML += `
+        <p class="user-message">${prompt}</p>
+    `;
+    botInput.value = "";
+    botResponse.innerHTML += `
+        <p class="bot-message" id="thinking">Thinking...</p>
+    `;
+    try {
+        const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${gemini_api}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    contents: [
+                        {
+                            parts: [
+                                {
+                                    text: prompt
+                                }
+                            ]
+                        }
+                    ]
+                })
+            }
+        );
+
+        const data = await response.json();
+        document.getElementById("thinking").remove();
+        const answer =
+            data.candidates?.[0]?.content?.parts?.[0]?.text ||
+            "No response.";
+        botResponse.innerHTML += `
+            <p class="bot-message">${answer}</p>
+        `;
+        botResponse.scrollTop = botResponse.scrollHeight;
+    } catch (error) {
+        document.getElementById("thinking").remove();
+        botResponse.innerHTML += `
+            <p class="bot-message">Something went wrong.</p>
+        `;
+        console.log(error);
+    }
+});

@@ -110,3 +110,62 @@ button:hover{
 .news-card:hover{
     background:#e9f4ff;
 }
+
+.chatbot{
+    margin-top:30px;
+    border-top:2px solid #eee;
+    padding-top:20px;
+}
+
+.chatbot h2{
+    text-align:center;
+    color:#333;
+    margin-bottom:15px;
+    text-transform:capitalize;
+}
+
+.bot-response{
+    height:250px;
+    overflow-y:auto;
+    background:#f8f9fc;
+    border:2px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.bot-message{
+    align-self:flex-start;
+    max-width:80%;
+    background:#e9ecef;
+    color:#222;
+    padding:10px 15px;
+    border-radius:15px;
+    word-wrap:break-word;
+}
+
+.user-message{
+    align-self:flex-end;
+    max-width:80%;
+    background:#4facfe;
+    color:white;
+    padding:10px 15px;
+    border-radius:15px;
+    word-wrap:break-word;
+}
+
+.chat-input-box{
+    display:flex;
+    gap:10px;
+}
+
+.chat-input-box input{
+    flex:1;
+}
+
+.chat-input-box button{
+    min-width:90px;
+}

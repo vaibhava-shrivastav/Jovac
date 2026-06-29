@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="container">
-      <h1> Weather App</h1>
+      <h1>Weather App</h1>
 
       <div class="search-box">
         <input type="text" id="input" placeholder="Enter city name..." />
@@ -20,6 +20,20 @@
       <div id="weather"></div>
 
       <div id="news"></div>
+
+      <div class="chatbot">
+        <h2>chatbot</h2>
+
+        <div id="bot-response" class="bot-response">
+          <p class="bot-message">Hello! Ask me anything about weather.</p>
+        </div>
+
+        <div class="chat-input-box">
+          <input type="text" id="bot-input" placeholder="Ask anything..." />
+
+          <button id="send-btn">Send</button>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
